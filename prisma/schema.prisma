@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  role         Role     @default(VENTAS)
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  contratos    Contrato[]
+}
+
+enum Role {
+  ADMIN
+  VENTAS
+}
+
+model Contrato {
+  id              String   @id @default(cuid())
+  titulo          String
+  tipo            String
+  estado          Estado   @default(BORRADOR)
+  archivoUrl      String?        // PDF firmado (futuro)
+  firmanteEmail   String
+  firmanteNombre  String?
+  firmanteDni     String         // DNI requerido para firmar
+  tokenFirma      String   @unique
+  firmadoAt       DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  creadoPorId     String
+  creadoPor       User     @relation(fields: [creadoPorId], references: [id])
+  eventos         FirmaEvento[]
+}
+
+enum Estado {
+  BORRADOR
+  ENVIADO
+  FIRMADO
+  CANCELADO
+}
+
+model FirmaEvento {
+  id         String   @id @default(cuid())
+  contratoId String
+  contrato   Contrato @relation(fields: [contratoId], references: [id])
+  ip         String?
+  userAgent  String?
+  accion     String   // abierto, firmado, descargado
+  createdAt  DateTime @default(now())
+}
