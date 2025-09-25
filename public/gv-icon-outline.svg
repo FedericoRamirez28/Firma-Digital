@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GV icon - outline">
+  <circle cx="256" cy="256" r="228" fill="none" stroke="#0F172A" stroke-width="24"/>
+  <text x="256" y="266" text-anchor="middle" dominant-baseline="central"
+        font-family="Poppins, Inter, Montserrat, Arial, sans-serif"
+        font-size="228" font-weight="800" fill="#0F172A" letter-spacing="-10"
+        paint-order="stroke">
+    GV
+  </text>
+  <!-- Notch cut by masking with white; for outline versions we keep it subtle using stroke color -->
+  <rect x="256" y="210" width="90" height="22" rx="11" fill="#FFFFFF" />
+</svg>

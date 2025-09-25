@@ -1,0 +1,1 @@
+export default function Page() { return <div>Contratos más vendidos (en progreso)</div>; }

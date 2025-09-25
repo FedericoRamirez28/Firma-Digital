@@ -1,0 +1,11 @@
+{
+  // Hace que el lenguaje entienda @tailwind
+  "tailwindCSS.experimental.configFile": "tailwind.config.ts",
+  "tailwindCSS.emmetCompletions": true,
+
+  // Silencia el falso positivo del linter CSS
+  "css.lint.unknownAtRules": "ignore",
+
+  // Para que el intellisense funcione mejor en TS/TSX
+  "editor.quickSuggestions": { "strings": true }
+}

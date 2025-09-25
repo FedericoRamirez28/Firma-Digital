@@ -1,0 +1,108 @@
+/* ─────────────────────────────────────────────────────────────
+   DocxEditableViewer.scss  (namespace: .docxv)
+   ───────────────────────────────────────────────────────────── */
+
+/* Paleta rápida (coincide con HomeContratos.scss) */
+$slate-900: #0f172a;
+$slate-700: #334155;
+$slate-600: #475569;
+$slate-500: #64748b;
+$slate-300: #cbd5e1;
+$slate-200: #e2e8f0;
+
+/* Contenedor principal */
+.docxv {
+  display: grid;
+  padding: 16px; /* equivalente a gap-3 */
+
+  &__title {
+    text-align: center;
+    padding-bottom: 16px;
+    font-size: 1.5rem;   /* text-sm */
+    color: $slate-200;     /* text-slate-500 */
+  }
+
+  /* Panel que contiene el HTML de la plantilla */
+  &__panel {
+    min-height: 100%;              /* min-h-[60vh] */
+    background: #fff;              /* bg-white */
+    border: 1px solid $slate-200;  /* border border-slate-200 */
+    border-radius: 16px;           /* rounded-2xl */
+    padding: 24px;                 /* p-6 */
+    box-shadow: 0 1px 2px rgba(0,0,0,.06); /* shadow-sm */
+    color: $slate-900;
+
+    /* “prose” básico + max-w-none */
+    /* Tipografía cómoda para contenido pegado desde docx/html */
+    &,
+    & * {
+      max-width: 100%;
+    }
+
+    h1, h2, h3 {
+      color: $slate-700;
+      line-height: 1.2;
+      margin: 1.25em 0 .6em;
+    }
+    h1 { font-size: clamp(1.5rem, 2.4vw, 2rem); }
+    h2 { font-size: clamp(1.25rem, 2.0vw, 1.5rem); }
+    h3 { font-size: clamp(1.125rem, 1.8vw, 1.25rem); }
+
+    p, ul, ol, table, blockquote, pre {
+      margin: .75em 0;
+    }
+
+    ul, ol {
+      padding-left: 1.25rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid $slate-200;
+
+      th, td {
+        border: 1px solid $slate-200;
+        padding: .5rem .6rem;
+        vertical-align: top;
+      }
+
+      th {
+        background: #f8fafc;
+        font-weight: 600;
+        color: $slate-700;
+      }
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Campos editables (reemplaza el <style> inline del TSX) */
+    .editable {
+      background: #fff3c4;
+      outline: 0;
+      border-radius: .25rem;
+      padding: 0 .2rem;
+      transition: box-shadow .15s ease, background .15s ease;
+
+      &:focus {
+        /* ring indigo */
+        box-shadow: 0 0 0 2px rgba(99,102,241,.45);
+        background: #fff;
+      }
+    }
+  }
+
+  /* Estado de carga simple (si lo querés usar) */
+  &__loading {
+    border: 1px solid $slate-200;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: .875rem;
+    color: $slate-600;
+    background: #fff;
+  }
+}
